@@ -8,7 +8,7 @@ import java.sql.Date;
 /**
  * Created by joancolom on 10/11/16.
  */
-
+//
 public class Contract {
 
     // The "Content authority" is a name for the entire content provider, similar to the
