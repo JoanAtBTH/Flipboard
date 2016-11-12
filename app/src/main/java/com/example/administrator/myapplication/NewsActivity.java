@@ -15,6 +15,7 @@ import java.sql.Date;
 
 public class NewsActivity extends AppCompatActivity {
     private TextView textView2,textView3,textView;
+    private Integer id;
     private String topic, subcategory, srcFont, newsContent, image;
     private Date date;
 
@@ -29,6 +30,14 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     //Getters and setters #######To Be Talked
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTopic() {
         return topic;
