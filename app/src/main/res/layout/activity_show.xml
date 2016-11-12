@@ -19,6 +19,13 @@
             android:layout_height="1000dp"
             android:orientation="vertical" >
 
+            <TextView
+                android:text="topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textAlignment="center" />
+
             <Button
                 android:text="new1"
                 android:layout_width="match_parent"
