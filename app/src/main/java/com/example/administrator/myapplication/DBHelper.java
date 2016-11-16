@@ -173,6 +173,21 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
+        db.close();
+
+        return cursor;
+    }
+
+    /* Get all topics sorted by date */
+    public Cursor select_topics() {
+        String query = "Select distinct " + Contract.TNews.COLUMN_TOPIC +
+                " FROM " + Contract.TABLE_NEWS +
+                "' ORDER BY '" + Contract.TNews.COLUMN_DATE + "' DESC'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+        db.close();
 
         return cursor;
     }

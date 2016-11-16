@@ -7,12 +7,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private Button button1,button2,button3,button4,button5;
+    private ListView lvTopics;
+    private ArrayList topicsArrayList;
+    /*private TopicsAdapter adapter;*/
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
