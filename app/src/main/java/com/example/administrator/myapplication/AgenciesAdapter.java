@@ -2,8 +2,10 @@ package com.example.administrator.myapplication;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,18 +25,28 @@ public class AgenciesAdapter extends ArrayAdapter {
     public AgenciesAdapter(Context context, ArrayList data) {
         super(context, R.layout.lv_agency_item, data);
         this.context = context;
-        this.data = data;
+        this.data = (ArrayList<ListModelAgency>)data;
     }
 
-    /*
     @Override
-    public void View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View item = inflater.inflate(R.layout.lv_agency_item, null);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.lv_agency_item, null);
+        }
 
         // set values of the item
-        TextView agencyName = (TextView)item.findViewById(R.id.tvAgency);
-        agencyName.setText(data.get(position).get);
+        TextView agencyName = (TextView)convertView.findViewById(R.id.tvAgency);
+        ListModelAgency agency = (ListModelAgency) data.get(position);
+        String name = agency.getName();
+        agencyName.setText(name);
+        Boolean subscribed = agency.getSubscribed();
+        CheckBox agencySubsribed = (CheckBox)convertView.findViewById(R.id.cbSubscribedAgency);
+        agencySubsribed.setChecked(subscribed);
+
+
+
+        return convertView;
     }
-    */
+
 }

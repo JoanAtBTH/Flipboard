@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -96,7 +96,12 @@
                         android:textSize="36sp" />
                 </TableRow>
             </TableLayout>
-        </LinearLayout>
+        </LinearLayout>-->
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvAgencies">
+        </ListView>
     </ScrollView>
 
     <Button
@@ -106,7 +111,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:id="@+id/button10"
+        android:id="@+id/btnAgenciesGoHome"
         android:textSize="24sp"
         android:onClick="onClickGoHomeView" />
 </RelativeLayout>
