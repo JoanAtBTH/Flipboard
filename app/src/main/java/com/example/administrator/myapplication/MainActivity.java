@@ -15,7 +15,7 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button1,button2,button3,button4,button5;
+    private Button button,button2,button3,button4,button5,button7;
     private ListView lvTopics;
     private ArrayList topicsArrayList;
     /*private TopicsAdapter adapter;*/
@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button1 = (Button) findViewById(R.id.button1);
+        button = (Button) findViewById(R.id.button);
         button2 = (Button) findViewById(R.id.button2);
         button3 = (Button) findViewById(R.id.button3);
         button4 = (Button) findViewById(R.id.button4);
         button5 = (Button) findViewById(R.id.button5);
-        button1.setOnClickListener(new View.OnClickListener() {
+        button7 = (Button) findViewById(R.id.button7);
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
@@ -59,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
