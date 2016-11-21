@@ -13,8 +13,8 @@ import android.content.Intent;
 import java.sql.Date;
 public class NewsActivity extends AppCompatActivity {
     private TextView textView2,textView3,textView;
-    private Integer id;
-    private String topic, subcategory, srcFont, newsContent, image;
+    private Integer id, subscribed;
+    private String topic, subcategory, newsContent, image;
     private Date date;
 
 
@@ -74,12 +74,12 @@ public class NewsActivity extends AppCompatActivity {
         this.subcategory = subcategory;
     }
 
-    public String getSrcFont() {
-        return srcFont;
+    public Integer getSubscribed() {
+        return subscribed;
     }
 
-    public void setSrcFont(String srcFont) {
-        this.srcFont = srcFont;
+    public void setSubscribed(Integer subscribed) {
+        this.subscribed = subscribed;
     }
 
     public String getNewsContent() {
@@ -106,11 +106,4 @@ public class NewsActivity extends AppCompatActivity {
         this.date = date;
     }
 
-    /*
-     *
-     *
-     *  GETTERS AND SETTERS TO BE TALKED
-     *
-     *
-     */
 }

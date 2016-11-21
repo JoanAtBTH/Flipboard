@@ -33,7 +33,8 @@ public class Contract {
                     TNews.COLUMN_ID + " " + INT_TYPE + " PRIMARY KEY " + COMMA_SEP +//id of the new
                     TNews.COLUMN_TOPIC + " " + TEXT_TYPE + COMMA_SEP +              //topic of the new
                     TNews.COLUMN_SUBCATEGORY + " " + TEXT_TYPE + COMMA_SEP +        //subcategory of the new
-                    TNews.COLUMN_SOURCE_FONT + " " + TEXT_TYPE + COMMA_SEP +        //source font of the new
+                    TNews.COLUMN_SUBSCRIBED +  " " + INT_TYPE +                     //subscribed to subcategory
+                    " CHECK " + TNews.COLUMN_SUBSCRIBED +  " IN(0,1)" + COMMA_SEP +
                     TNews.COLUMN_NEW_CONTENT + " " + TEXT_TYPE + COMMA_SEP +        //text of the new
                     TNews.COLUMN_IMAGE +  " " + TEXT_TYPE + COMMA_SEP +             //image of new
                     TNews.COLUMN_DATE +  " " + DATE_TYPE + COMMA_SEP +              //date of new
@@ -48,7 +49,7 @@ public class Contract {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_TOPIC = "topic";
         public static final String COLUMN_SUBCATEGORY = "subcategory";
-        public static final String COLUMN_SOURCE_FONT = "source_font";
+        public static final String COLUMN_SUBSCRIBED = "subscribed";
         public static final String COLUMN_NEW_CONTENT = "new_content";
         public static final String COLUMN_IMAGE = "image";
         public static final String COLUMN_DATE = "date";
