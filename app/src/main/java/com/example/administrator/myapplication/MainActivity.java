@@ -1,5 +1,6 @@
 package com.example.administrator.myapplication;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,11 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button button,button2,button3,button4,button5,button7;
-    private ListView lvTopics;
+//    private ListView lvTopics;
     private ArrayList topicsArrayList;
     /*private TopicsAdapter adapter;*/
     private final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -31,6 +33,39 @@ public class MainActivity extends AppCompatActivity {
         button4 = (Button) findViewById(R.id.button4);
         button5 = (Button) findViewById(R.id.button5);
         button7 = (Button) findViewById(R.id.button7);
+
+        topicsArrayList = new ArrayList<>();
+        DBHelper dbHelper = DBHelper.getInstance(this);
+        if (dbHelper.select_new() == null) { //first fill of db
+            dbHelper.add_new("Technology", "", 0, "", "", Date.valueOf("2000-11-01"));
+            dbHelper.add_new("Science", "", 0, "", "", Date.valueOf("2001-12-02"));
+            dbHelper.add_new("Sports", "", 0, "", "", Date.valueOf("2002-01-03"));
+            dbHelper.add_new("Culture", "", 0, "", "", Date.valueOf("2003-02-04"));
+            dbHelper.add_new("Trending topics", "", 0, "", "", Date.valueOf("2004-03-05"));
+            dbHelper.add_new("News", "", 0, "", "", Date.valueOf("2005-04-06"));
+        }
+        Cursor cursor = dbHelper.select_topics();
+        if (cursor.moveToFirst()) {
+            for (int i = 0; i < 6 && !cursor.isAfterLast(); i++) {
+                String aux = cursor.getString(i);
+                topicsArrayList.add(aux);
+                cursor.moveToNext();
+            }
+        }
+
+        if (!topicsArrayList.isEmpty()) {
+            button.setText(topicsArrayList.get(0).toString());
+            if (topicsArrayList.size() > 1)
+                button2.setText(topicsArrayList.get(1).toString());
+            if (topicsArrayList.size() > 2)
+                button3.setText(topicsArrayList.get(2).toString());
+            if (topicsArrayList.size() > 3)
+                button4.setText(topicsArrayList.get(3).toString());
+            if (topicsArrayList.size() > 4)
+                button5.setText(topicsArrayList.get(4).toString());
+            if (topicsArrayList.size() > 5)
+                button7.setText(topicsArrayList.get(5).toString());
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

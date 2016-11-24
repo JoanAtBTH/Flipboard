@@ -141,7 +141,7 @@ public class DBHelper extends SQLiteOpenHelper {
         catch (SQLiteException e) {
             Log.d(LOG_TAG, "Error function subscribe_to_subcategory(subc):\n\t" + e.getMessage());
         }
-        db.close();
+        //db.close();
     }
 
     /** Subscribe to a particular subcategory
@@ -160,7 +160,7 @@ public class DBHelper extends SQLiteOpenHelper {
         catch (SQLiteException e) {
             Log.d(LOG_TAG, "Error function subscribe_to_subcategory(subc):\n\t" + e.getMessage());
         }
-        db.close();
+        //db.close();
     }
 
     /*
@@ -218,7 +218,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select_news_subcategory(subcategory):\n\t" + e.getMessage());
         }
 
-        db.close();
+        //db.close();
         return cursor;
     }
 
@@ -238,7 +238,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select_topics: " + e.getMessage());
         }
 
-        db.close();
+        //db.close();
         return cursor;
     }
 
@@ -258,7 +258,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select subcategories: " + e.getMessage());
         }
 
-        db.close();
+        //db.close();
 
         return cursor;
     }
@@ -279,7 +279,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select subcategories(topic): " + e.getMessage());
         }
 
-        db.close();
+        //db.close();
         return cursor;
     }
 
@@ -295,7 +295,7 @@ public class DBHelper extends SQLiteOpenHelper {
         catch (SQLiteException e) {
             Log.d(LOG_TAG, "Error getting max id: " + e.getMessage());
             Integer res = 0;
-            db.close();
+            //db.close();
             return res;
         }
 
@@ -303,7 +303,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor != null && cursor.moveToFirst()) {
             res = cursor.getColumnIndex(Contract.TNews.COLUMN_ID);
             cursor.close();
-            db.close();
+            //db.close();
         }
 
         return res;

@@ -33,11 +33,10 @@ public class Contract {
                     TNews.COLUMN_ID + " " + INT_TYPE + " PRIMARY KEY " + COMMA_SEP +//id of the new
                     TNews.COLUMN_TOPIC + " " + TEXT_TYPE + COMMA_SEP +              //topic of the new
                     TNews.COLUMN_SUBCATEGORY + " " + TEXT_TYPE + COMMA_SEP +        //subcategory of the new
-                    TNews.COLUMN_SUBSCRIBED +  " " + INT_TYPE +                     //subscribed to subcategory
-                    " CHECK " + TNews.COLUMN_SUBSCRIBED +  " IN(0,1)" + COMMA_SEP +
+                    TNews.COLUMN_SUBSCRIBED +  " " + INT_TYPE + COMMA_SEP +         //subscribed to subcategory
                     TNews.COLUMN_NEW_CONTENT + " " + TEXT_TYPE + COMMA_SEP +        //text of the new
                     TNews.COLUMN_IMAGE +  " " + TEXT_TYPE + COMMA_SEP +             //image of new
-                    TNews.COLUMN_DATE +  " " + DATE_TYPE + COMMA_SEP +              //date of new
+                    TNews.COLUMN_DATE +  " " + DATE_TYPE +              //date of new
             " )";
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NEWS;
