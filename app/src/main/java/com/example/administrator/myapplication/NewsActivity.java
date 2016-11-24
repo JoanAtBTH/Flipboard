@@ -40,6 +40,10 @@ public class NewsActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.help_item) {
+            Intent intent = new Intent(NewsActivity.this, HelpActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.subscribe_item) {
             Intent intent = new Intent(NewsActivity.this, ContentActivity.class);
             startActivity(intent);
         }

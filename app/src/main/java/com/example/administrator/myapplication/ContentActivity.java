@@ -68,6 +68,10 @@ public class ContentActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.help_item) {
+            Intent intent = new Intent(ContentActivity.this, HelpActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.subscribe_item) {
             Intent intent = new Intent(ContentActivity.this, ContentActivity.class);
             startActivity(intent);
         }

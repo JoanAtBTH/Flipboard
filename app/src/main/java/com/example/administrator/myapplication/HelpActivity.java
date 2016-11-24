@@ -33,6 +33,10 @@ public class HelpActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.help_item) {
+            Intent intent = new Intent(HelpActivity.this, HelpActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.subscribe_item) {
             Intent intent = new Intent(HelpActivity.this, ContentActivity.class);
             startActivity(intent);
         }

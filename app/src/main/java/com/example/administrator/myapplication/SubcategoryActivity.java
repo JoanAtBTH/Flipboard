@@ -27,7 +27,64 @@ public class SubcategoryActivity extends AppCompatActivity {
         button17 = (Button) findViewById(R.id.button17);
         button18 = (Button) findViewById(R.id.button18);
         button19 = (Button) findViewById(R.id.button19);
+        button11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button17.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+        button19.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -44,6 +101,10 @@ public class SubcategoryActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.help_item) {
             Intent intent = new Intent(SubcategoryActivity.this, HelpActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.subscribe_item) {
+            Intent intent = new Intent(SubcategoryActivity.this, ContentActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
