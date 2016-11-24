@@ -18,7 +18,9 @@
         <activity android:name=".ShowActivity" />
         <activity android:name=".NewsActivity" />
         <activity android:name=".ContentActivity" />
-        <activity android:name=".AgenciesActivity"></activity>
+        <activity android:name=".AgenciesActivity" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".SubcategoryActivity"></activity>
     </application>
 
 </manifest>
