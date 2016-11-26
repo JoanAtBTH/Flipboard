@@ -84,10 +84,10 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(Contract.TNews.COLUMN_IMAGE, image);
         values.put(Contract.TNews.COLUMN_DATE, date.toString());
 
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         db.insert(Contract.TABLE_NEWS, null, values);
         String selectQuery = "SELECT * FROM " + Contract.TABLE_NEWS + " " +
-                "WHERE " + Contract.TNews.COLUMN_ID + "='" + id + "'";
+                "WHERE " + Contract.TNews.COLUMN_ID + "=" + id;
         Cursor cursor = null;
         try {
             cursor = db.rawQuery(selectQuery, null);
@@ -96,7 +96,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error function add_new:\n\t" + e.getMessage());
         }
 
-        if (cursor != null && cursor.moveToFirst()) {
+        if (/*cursor != null && */cursor.moveToFirst()) {
             NewsActivity newsActivity = new NewsActivity();
             newsActivity.setId(Integer.valueOf(cursor.getString(0)));
             newsActivity.setTopic(cursor.getString(1));
@@ -106,16 +106,15 @@ public class DBHelper extends SQLiteOpenHelper {
             newsActivity.setImage(cursor.getString(5));
             newsActivity.setDate(Date.valueOf(cursor.getString(6)));
 
-            /* // Pay attention, data comes from DB, not from a view Form
+             // Pay attention, data comes from DB, not from a view Form
             // We will use this function to precharge data on DB
-            String res = "Result selected: id: " + newsActivity.getId() +
+            String res = "Result inserted:::::::\t id: " + newsActivity.getId() +
                 ",/n topic: " + newsActivity.getTopic() +
                 ",/n subcategory: " + newsActivity.getSubcategory() +
                 ",/n subscribed: " + newsActivity.getSubscribed() +
                 ",/n newsContent: " + newsActivity.getNewsContent() +
                 ",/n image: " + newsActivity.getImage() + "\n\n";
             Log.d(LOG_TAG, res);
-            */
         }
     }
 
@@ -205,7 +204,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /* Get all the news of an specific subcategory */
     public Cursor select_news_subcategory(String subcategory) {
         String query = "Select * FROM " + Contract.TABLE_NEWS + " WHERE " +
-                Contract.TNews.COLUMN_SUBCATEGORY + " =  '" + subcategory + "'" +
+                Contract.TNews.COLUMN_SUBCATEGORY + "='" + subcategory + "'" +
                 " ORDER BY " + Contract.TNews.COLUMN_DATE + " DESC";
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -301,7 +300,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Integer res = 0;
         if (cursor != null && cursor.moveToFirst()) {
-            res = cursor.getColumnIndex(Contract.TNews.COLUMN_ID);
+            res = cursor.getInt(0);
+            Log.d(LOG_TAG, "Max value::::::: " + res);
             cursor.close();
             //db.close();
         }
