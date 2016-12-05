@@ -4,12 +4,12 @@ package com.example.administrator.myapplication;
  * Created by joancolom on 15/11/16.
  */
 
-public class ListModelAgency {
+public class ListModelSubscribe {
     // private variables
     private String name;
     private Boolean subscribed;
 
-    public ListModelAgency(String name, Boolean subscribed) {
+    public ListModelSubscribe(String name, Boolean subscribed) {
         this.name = name;
         this.subscribed = subscribed;
     }
@@ -23,8 +23,8 @@ public class ListModelAgency {
         this.name = name;
     }
 
-    public Boolean getSubscribed() {
-        return subscribed;
+    public boolean isSubscribed() {
+        return subscribed.booleanValue();
     }
 
     public void setSubscribed(Boolean subscribed) {

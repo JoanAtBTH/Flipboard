@@ -10,13 +10,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/tvAgency" />
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/tvSubscribedSubcategory" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvAgency"
+        android:layout_alignTop="@+id/tvSubscribedSubcategory"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/cbSubscribedAgency" />
+        android:id="@+id/cbSubscribedSubcategory" />
 </RelativeLayout>

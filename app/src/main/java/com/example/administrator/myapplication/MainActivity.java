@@ -43,12 +43,7 @@ public class MainActivity extends AppCompatActivity {
         int n = dbHelper.select_new().getCount();
         Log.d(LOG_TAG, "Initialy, size(db) ---------->\t" + n);
         if (dbHelper.select_new().getCount() <= 1) { //first fill of db
-            dbHelper.add_new("Technology", "", 0, "", "", Date.valueOf("2000-11-01"));
-            dbHelper.add_new("Science", "", 0, "", "", Date.valueOf("2001-12-02"));
-            dbHelper.add_new("Sports", "", 0, "", "", Date.valueOf("2002-01-03"));
-            dbHelper.add_new("Culture", "", 0, "", "", Date.valueOf("2003-02-04"));
-            dbHelper.add_new("Trending topics", "", 0, "", "", Date.valueOf("2004-03-05"));
-            dbHelper.add_new("News", "", 0, "", "", Date.valueOf("2005-04-06"));
+            fill_db();      // initialize db content
         }
         Cursor cursor = dbHelper.select_topics();
         if (cursor != null) {
@@ -165,12 +160,45 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Intent intent = new Intent();
+
+        if (id == R.id.help_item)
+            intent = new Intent(MainActivity.this, HelpActivity.class);
+        else if (id == R.id.subscribe_item)
+            intent = new Intent(MainActivity.this, SubscribeActivity.class);
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.help_item) {
-            Intent intent = new Intent(MainActivity.this, ContentActivity.class);
-            startActivity(intent);
-        }
+        if (intent.resolveActivity(getPackageManager()) != null)
+            startActivityForResult(intent, 0);
+        else
+            Log.e(LOG_TAG, "Error on changing view with main options");
+
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     *  private methods of the class
+     */
+
+    /*
+     * first fill of the database with initial content
+     */
+    private void fill_db() {
+        DBHelper dbHelper = DBHelper.getInstance(this);
+
+        // topics
+        dbHelper.add_new("Technology", "", 0, "", "", Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Science", "", 0, "", "", Date.valueOf("2001-12-02"));
+        dbHelper.add_new("Sports", "", 0, "", "", Date.valueOf("2002-01-03"));
+        dbHelper.add_new("Culture", "", 0, "", "", Date.valueOf("2003-02-04"));
+        dbHelper.add_new("Trending topics", "", 0, "", "", Date.valueOf("2004-03-05"));
+        dbHelper.add_new("News", "", 0, "", "", Date.valueOf("2005-04-06"));
+
+        // subcategories
+        dbHelper.add_new("Technology", "Android", 0, "", "", Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Technology", "Apple", 1, "", "", Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Technology", "Gadgets", 1, "", "", Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Technology", "Google", 0, "", "", Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Technology", "Mac OS", 0, "", "", Date.valueOf("2003-10-15"));
     }
 }

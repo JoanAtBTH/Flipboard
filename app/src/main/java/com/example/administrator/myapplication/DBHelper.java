@@ -72,6 +72,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /*
      *  INSERTS
      */
+
     public void add_new(String topic, String subcategory, Integer subscribed, String new_content, String image, Date date) throws SQLiteConstraintException {
         Integer max_id = get_max_id();
         Integer id = max_id + 1;
@@ -217,7 +218,6 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select_news_subcategory(subcategory):\n\t" + e.getMessage());
         }
 
-        //db.close();
         return cursor;
     }
 
@@ -257,9 +257,34 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select subcategories: " + e.getMessage());
         }
 
-        //db.close();
-
         return cursor;
+    }
+
+    /* Returns if the user is subscribed to subcategory */
+    public Boolean isSubscribed(String subcategory) {
+        String query = "SELECT COUNT(*) FROM " + Contract.TABLE_NEWS +
+                " WHERE " + Contract.TNews.COLUMN_SUBCATEGORY + "='" + subcategory + "'" +
+                " AND " + Contract.TNews.COLUMN_SUBSCRIBED + ">" + 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery(query, null);
+        }
+        catch (SQLiteException e) {
+            Log.d(LOG_TAG, "Error checking subscribed subcategory:\n\t\t" + e.getMessage());
+        }
+
+        int cnt = 0;
+        try {
+            if (cursor != null && cursor.moveToFirst())
+                cnt = cursor.getInt(0);
+        }
+        catch (Exception e) {
+            Log.d(LOG_TAG, "Error getting if isSubscribed:\n\t\t" + e.getMessage());
+        }
+
+        return (cnt > 0);
     }
 
     /* Get all subcategories of one topic sorted alphabeticaly */
@@ -278,7 +303,6 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select subcategories(topic): " + e.getMessage());
         }
 
-        //db.close();
         return cursor;
     }
 
@@ -303,7 +327,6 @@ public class DBHelper extends SQLiteOpenHelper {
             res = cursor.getInt(0);
             Log.d(LOG_TAG, "Max value::::::: " + res);
             cursor.close();
-            //db.close();
         }
 
         return res;
