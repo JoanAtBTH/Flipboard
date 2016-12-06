@@ -13,19 +13,18 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:paddingBottom="60dp"
         android:id="@+id/lvSubscribe">
     </ListView>
 
     <Button
         android:text="home page"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_height="55dp"
         android:id="@+id/btnSubscribeGoHome"
-        android:textSize="24sp"
-        android:onClick="onClickGoHomeView" />
+        android:textSize="22sp"
+        android:onClick="onClickGoHomeView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
 

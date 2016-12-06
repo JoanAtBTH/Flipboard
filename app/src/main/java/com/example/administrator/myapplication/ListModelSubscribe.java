@@ -1,5 +1,8 @@
 package com.example.administrator.myapplication;
 
+import android.widget.CheckBox;
+import android.widget.TextView;
+
 /**
  * Created by joancolom on 15/11/16.
  */
@@ -29,5 +32,9 @@ public class ListModelSubscribe {
 
     public void setSubscribed(Boolean subscribed) {
         this.subscribed = subscribed;
+    }
+
+    public void toggleSubscribed() {
+        subscribed = new Boolean(!subscribed.booleanValue());
     }
 }

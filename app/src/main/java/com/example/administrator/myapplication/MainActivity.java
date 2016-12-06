@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SubcategoryActivity.class);
+                intent.putExtra("category", button.getText().toString());
                 if (intent.resolveActivity(getPackageManager()) != null)
                     startActivityForResult(intent, 0);
                 else
@@ -116,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                Intent intent = new Intent(MainActivity.this, SubcategoryActivity.class);
+                intent.putExtra("category", button2.getText().toString());
                 if (intent.resolveActivity(getPackageManager()) != null)
                     startActivityForResult(intent, 0);
                 else
@@ -126,7 +128,8 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                Intent intent = new Intent(MainActivity.this, SubcategoryActivity.class);
+                intent.putExtra("category", button3.getText().toString());
                 if (intent.resolveActivity(getPackageManager()) != null)
                     startActivityForResult(intent, 0);
                 else
@@ -136,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                Intent intent = new Intent(MainActivity.this, SubcategoryActivity.class);
+                intent.putExtra("category", button4.getText().toString());
                 if (intent.resolveActivity(getPackageManager()) != null)
                     startActivityForResult(intent, 0);
                 else
@@ -146,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                Intent intent = new Intent(MainActivity.this, SubcategoryActivity.class);
+                intent.putExtra("category", button5.getText().toString());
                 if (intent.resolveActivity(getPackageManager()) != null)
                     startActivityForResult(intent, 0);
                 else
@@ -156,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
+                Intent intent = new Intent(MainActivity.this, SubcategoryActivity.class);
+                intent.putExtra("category", button7.getText().toString());
                 if (intent.resolveActivity(getPackageManager()) != null)
                     startActivityForResult(intent, 0);
                 else
