@@ -22,9 +22,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private Button button,button2,button3,button4,button5,button7;
-    //    private ListView lvTopics;
     private ArrayList topicsArrayList;
-    /*private TopicsAdapter adapter;*/
     private final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -108,43 +106,61 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, SubcategoryActivity.class);
+                if (intent.resolveActivity(getPackageManager()) != null)
+                    startActivityForResult(intent, 0);
+                else
+                    Log.e(LOG_TAG, "Error on changing view clicking the topic");
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                startActivity(intent);
+                if (intent.resolveActivity(getPackageManager()) != null)
+                    startActivityForResult(intent, 0);
+                else
+                    Log.e(LOG_TAG, "Error on changing view clicking the topic");
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                startActivity(intent);
+                if (intent.resolveActivity(getPackageManager()) != null)
+                    startActivityForResult(intent, 0);
+                else
+                    Log.e(LOG_TAG, "Error on changing view clicking the topic");
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                startActivity(intent);
+                if (intent.resolveActivity(getPackageManager()) != null)
+                    startActivityForResult(intent, 0);
+                else
+                    Log.e(LOG_TAG, "Error on changing view clicking the topic");
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                startActivity(intent);
+                if (intent.resolveActivity(getPackageManager()) != null)
+                    startActivityForResult(intent, 0);
+                else
+                    Log.e(LOG_TAG, "Error on changing view clicking the topic");
             }
         });
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                startActivity(intent);
+                if (intent.resolveActivity(getPackageManager()) != null)
+                    startActivityForResult(intent, 0);
+                else
+                    Log.e(LOG_TAG, "Error on changing view clicking the topic");
             }
         });
     }

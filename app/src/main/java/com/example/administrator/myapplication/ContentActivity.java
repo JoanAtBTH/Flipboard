@@ -2,6 +2,7 @@ package com.example.administrator.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ public class ContentActivity extends AppCompatActivity {
     private CheckBox checkBox, checkBox2,checkBox3,checkBox4,checkBox5,checkBox6;
     private CheckBox checkBox7, checkBox8,checkBox9,checkBox10,checkBox11;
     private Button button;
+    private final String LOG_TAG = ContentActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +66,20 @@ public class ContentActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        //noinspection SimplifiableIfStatement
         int id = item.getItemId();
+        Intent intent = new Intent();
+
+        if (id == R.id.help_item)
+            intent = new Intent(ContentActivity.this, HelpActivity.class);
+        else if (id == R.id.subscribe_item)
+            intent = new Intent(ContentActivity.this, SubscribeActivity.class);
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.help_item) {
-            Intent intent = new Intent(ContentActivity.this, HelpActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.subscribe_item) {
-            Intent intent = new Intent(ContentActivity.this, ContentActivity.class);
-            startActivity(intent);
-        }
+        if (intent.resolveActivity(getPackageManager()) != null)
+            startActivityForResult(intent, 0);
+        else
+            Log.e(LOG_TAG, "Error on changing view with main options");
         return super.onOptionsItemSelected(item);
 
     }

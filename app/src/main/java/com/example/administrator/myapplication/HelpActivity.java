@@ -2,6 +2,7 @@ package com.example.administrator.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,7 @@ public class HelpActivity extends AppCompatActivity {
             "typesetting, remaining essentially unchanged. It was popularised in the 1960s with " +
             "the release of Letraset sheets containing Lorem Ipsum passages, and more recently " +
             "with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    private final String LOG_TAG = HelpActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +41,19 @@ public class HelpActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Intent intent = new Intent();
+
+        if (id == R.id.help_item)
+            intent = new Intent(HelpActivity.this, HelpActivity.class);
+        else if (id == R.id.subscribe_item)
+            intent = new Intent(HelpActivity.this, SubscribeActivity.class);
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.help_item) {
-            Intent intent = new Intent(HelpActivity.this, HelpActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.subscribe_item) {
-            Intent intent = new Intent(HelpActivity.this, ContentActivity.class);
-            startActivity(intent);
-        }
+        if (intent.resolveActivity(getPackageManager()) != null)
+            startActivityForResult(intent, 0);
+        else
+            Log.e(LOG_TAG, "Error on changing view with help options");
+
         return super.onOptionsItemSelected(item);
     }
 
