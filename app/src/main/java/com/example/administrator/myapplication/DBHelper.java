@@ -237,7 +237,6 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(LOG_TAG, "Error funcio select_topics: " + e.getMessage());
         }
 
-        //db.close();
         return cursor;
     }
 
@@ -245,6 +244,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor select_subcategories() {
         String query = "SELECT distinct " + Contract.TNews.COLUMN_SUBCATEGORY +
                 " FROM " + Contract.TABLE_NEWS +
+                " WHERE " + Contract.TNews.COLUMN_SUBCATEGORY + "<>''" +
                 " ORDER BY " + Contract.TNews.COLUMN_SUBCATEGORY;
 
         SQLiteDatabase db = this.getReadableDatabase();

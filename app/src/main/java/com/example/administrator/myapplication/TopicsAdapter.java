@@ -1,7 +1,6 @@
 package com.example.administrator.myapplication;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,9 +23,9 @@ public class TopicsAdapter extends ArrayAdapter {
      */
 
     public TopicsAdapter(Context context, ArrayList data) {
-        super(context, R.layout.lv_agency_item, data);
+        super(context, R.layout.lv_subscribe_item, data);
         this.context = context;
-        this.data = (ArrayList<ListModelAgency>)data;
+        this.data = (ArrayList<ListModelSubscribe>)data;
     }
 
     @Override
@@ -38,7 +37,7 @@ public class TopicsAdapter extends ArrayAdapter {
 
         // set values of the item
         TextView agencyName = (TextView)convertView.findViewById(R.id.tvAgency);
-        ListModelAgency agency = (ListModelAgency) data.get(position);
+        ListModelSubscribe agency = (ListModelSubscribe) data.get(position);
         String name = agency.getName();
         agencyName.setText(name);
         Boolean subscribed = agency.getSubscribed();

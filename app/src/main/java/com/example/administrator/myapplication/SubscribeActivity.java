@@ -38,7 +38,17 @@ public class SubscribeActivity extends AppCompatActivity {
             }
         });
 
+        //Debugging info
+        String info = "Initial arrayList:\n\t\t";
+        info += dataToString();
+        Log.d(LOG_TAG, info);
         fillArrayList();
+        //Debugging info
+        info = "After fill, arrayList:\n\t\t";
+        info += dataToString();
+        Log.d(LOG_TAG, info);
+
+        // Apply adapter to ListView
         setListViewAdapter();
     }
 
@@ -53,23 +63,22 @@ public class SubscribeActivity extends AppCompatActivity {
         }
     }
 
-
     /*
      * Private methods
      */
     private void fillArrayList() {
         subscribeArrayList = new ArrayList<ListModelSubscribe>();
-        /*subscribeArrayList.add(new ListModelSubscribe("BBC", false));
-        subscribeArrayList.add(new ListModelSubscribe("New York Times", true));
-        subscribeArrayList.add(new ListModelSubscribe("The times", false));*/
         DBHelper db = DBHelper.getInstance(this);
         Cursor cursor = db.select_subcategories();
         try {
             if (cursor != null && cursor.moveToFirst()) {
+                Log.d(LOG_TAG, "Number subcategories:\n\t\t" + cursor.getCount());
                 do {
                     String subcat = cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_SUBCATEGORY));
                     Boolean subscribed = db.isSubscribed(subcat);
-                    subscribeArrayList.add(new ListModelSubscribe(subcat, subscribed));
+                    ListModelSubscribe subscription = new ListModelSubscribe(subcat, subscribed);
+                    if (subcat != "")
+                        subscribeArrayList.add(subscription);
                 }
                 while (cursor.moveToNext());
             }
@@ -82,5 +91,19 @@ public class SubscribeActivity extends AppCompatActivity {
     private void setListViewAdapter() {
         adapter = new SubscribeAdapter(this, subscribeArrayList);
         lvSubscribe.setAdapter(adapter);
+    }
+
+    private String dataToString() {
+        String result = "null";
+        if (subscribeArrayList != null) {
+            int n = subscribeArrayList.size();
+            ListModelSubscribe subscription;
+            result = "";
+            for (int i = 0; i < n; i++) {
+                subscription = (ListModelSubscribe) subscribeArrayList.get(i);
+                result += "(  " + subscription.getName() + ", " + subscription.isSubscribed() + "   ) ;";
+            }
+        }
+        return result;
     }
 }
