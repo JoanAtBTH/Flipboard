@@ -1,22 +1,30 @@
 package com.example.administrator.myapplication;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewsActivity extends AppCompatActivity {
-    private TextView textView2,textView3,textView;
+    private ListView listView;
     private Integer id, subscribed;
     private String topic, subcategory, newsContent, image;
     private Date date;
+    private ArrayList<String> arrayList;
     private final String LOG_TAG = NewsActivity.class.getSimpleName();
 
 
@@ -24,9 +32,24 @@ public class NewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-        textView = (TextView) findViewById(R.id.textView);
-        textView2 = (TextView) findViewById(R.id.textView2);
-        textView3 = (TextView) findViewById(R.id.textView3);
+        listView = (ListView) findViewById(R.id.lvNews);
+
+        subcategory = this.getIntent().getExtras().getString("subcategory");
+        DBHelper db = DBHelper.getInstance(this);
+        Cursor cursor = db.select_news_subcategory(subcategory);
+        int n = 0;
+        arrayList = new ArrayList<String>();
+        if (cursor!= null && cursor.moveToFirst()) {
+            n = cursor.getCount();
+            do {
+                arrayList.add(cursor.getString(0).toString());
+            }
+            while (cursor.moveToNext());
+        }
+        String array[] = arrayList.toArray(new String[n]);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, array);
+        listView.setAdapter(adapter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
