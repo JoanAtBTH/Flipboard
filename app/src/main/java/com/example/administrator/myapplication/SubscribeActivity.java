@@ -41,14 +41,14 @@ public class SubscribeActivity extends AppCompatActivity {
         });
 
         //Debugging info
-        String info = "Initial arrayList:\n\t\t";
+        /*String info = "Initial arrayList:\n\t\t";
         info += dataToString();
-        Log.d(LOG_TAG, info);
+        Log.d(LOG_TAG, info);*/
         fillArrayList();
         //Debugging info
-        info = "After fill, arrayList:\n\t\t";
+        /*info = "After fill, arrayList:\n\t\t";
         info += dataToString();
-        Log.d(LOG_TAG, info);
+        Log.d(LOG_TAG, info);*/
 
         // Apply adapter to ListView
         setListViewAdapter();
@@ -102,7 +102,7 @@ public class SubscribeActivity extends AppCompatActivity {
         Cursor cursor = db.select_subcategories();
         try {
             if (cursor != null && cursor.moveToFirst()) {
-                Log.d(LOG_TAG, "Number subcategories:\n\t\t" + cursor.getCount());
+                /*Log.d(LOG_TAG, "Number subcategories:\n\t\t" + cursor.getCount());*/
                 do {
                     String subcat = cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_SUBCATEGORY));
                     Boolean subscribed = db.isSubscribed(subcat);

@@ -189,11 +189,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    /* Get all the news of an specific subcategory which subscribed to */
+    /* Get all the news of an specific subcategory */
     public Cursor select_news_subcategory(String subcategory) {
         String query = "Select * FROM " + Contract.TABLE_NEWS + " WHERE " +
                 Contract.TNews.COLUMN_SUBCATEGORY + "='" + subcategory + "'" +
-                " AND " + Contract.TNews.COLUMN_SUBSCRIBED + "=1" +
+                " AND " + Contract.TNews.COLUMN_NEW_CONTENT + "<>''" +
                 " ORDER BY " + Contract.TNews.COLUMN_DATE + " DESC";
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -333,7 +333,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Integer res = 0;
         if (cursor != null && cursor.moveToFirst()) {
             res = cursor.getInt(0);
-            Log.d(LOG_TAG, "Max value::::::: " + res);
+            /*Log.d(LOG_TAG, "Max value::::::: " + res);*/
             cursor.close();
         }
 
@@ -364,8 +364,8 @@ public class DBHelper extends SQLiteOpenHelper {
                         Contract.TNews.COLUMN_SUBCATEGORY));
                 String subscribed = cursor.getString(cursor.getColumnIndex(
                         Contract.TNews.COLUMN_SUBSCRIBED));
-                Log.d(LOG_TAG, "rec: " + id + "\ntopic: " + topic +
-                    "\nsubcategory: " + subcategory + "\nsubscribed: " + subscribed);
+                /*Log.d(LOG_TAG, "rec: " + id + "\ntopic: " + topic +
+                    "\nsubcategory: " + subcategory + "\nsubscribed: " + subscribed);*/
                 this.delete_new(id);
             }
             while (cursor.moveToNext());

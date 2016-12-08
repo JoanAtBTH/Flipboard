@@ -44,14 +44,23 @@ public class SubcategoryActivity extends AppCompatActivity {
             while (cursor.moveToNext());
         }
         String array[] = subcategoriesArrayList.toArray(new String[n]);
+        /*String log_info = "ArrayList:\n\t\t" + subcategoriesArrayList.toString() +
+                "\narray:\n\t\t";
+        for (int i = 0; i < array.length; i++) {
+            log_info += "  ( " + array[i] + " )  , ";
+        }
+        log_info += "\n\n\n";
+        Log.d(LOG_TAG, log_info);*/
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, array);
         lvSubcategories.setAdapter(adapter);
         lvSubcategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                int subcPos = position;
                 String  subcValue = (String) lvSubcategories.getItemAtPosition(position);
+                int pos = position - lvSubcategories.getFirstVisiblePosition();
+                subcValue = (String) adapterView.getItemAtPosition(pos);
+                /*Log.d(LOG_TAG, "subcategory passed to newsActivity is:\n\t\t" + subcValue);*/
                 Intent intent = new Intent(SubcategoryActivity.this, NewsActivity.class);
                 intent.putExtra("subcategory", subcValue);
                 if (intent.resolveActivity(getPackageManager()) != null)

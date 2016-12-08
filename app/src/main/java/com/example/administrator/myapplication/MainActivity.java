@@ -39,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
         topicsArrayList = new ArrayList<String>();
         DBHelper dbHelper = DBHelper.getInstance(this);
         int n = dbHelper.select_new().getCount();
-        Log.d(LOG_TAG, "Initialy, size(db) ---------->\t" + n);
+        /*Log.d(LOG_TAG, "Initialy, size(db) ---------->\t" + n);*/
         if (dbHelper.select_new().getCount() <= 1) { //first fill of db
             fill_db();      // initialize db content
         }
         Cursor cursor = dbHelper.select_topics();
-        if (cursor != null) {
+        /*if (cursor != null) {
             String info = "\t>>>>>>>>>>>>>>>>>>>>>>>>>>>\n" + cursor.toString();
                     Log.d(LOG_TAG, info);
-        }
+        }*/
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 String aux = cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_TOPIC));
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             while (cursor.moveToNext());
         }
 
-        Log.d(LOG_TAG, "Size arrayL topics: " + topicsArrayList.size());
+        /*Log.d(LOG_TAG, "Size arrayL topics: " + topicsArrayList.size());*/
 
         if (!topicsArrayList.isEmpty()) {
             //Random color = new Random();

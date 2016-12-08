@@ -34,18 +34,22 @@ public class NewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
         listView = (ListView) findViewById(R.id.lvNews);
 
-        subcategory = this.getIntent().getExtras().getString("subcategory");
+        subcategory = (String)this.getIntent().getExtras().getString("subcategory");
         DBHelper db = DBHelper.getInstance(this);
         Cursor cursor = db.select_news_subcategory(subcategory);
+        /*Log.d(LOG_TAG, "Subcategory recibed on NewsActivity:\n\t\t" + subcategory);*/
         int n = 0;
         arrayList = new ArrayList<String>();
         if (cursor!= null && cursor.moveToFirst()) {
             n = cursor.getCount();
+            /*Log.d(LOG_TAG, "Number of rows of the query:\n\t\t" + n);*/
             do {
-                arrayList.add(cursor.getString(0).toString());
+                arrayList.add(cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_NEW_CONTENT)).toString());
             }
             while (cursor.moveToNext());
         }
+        /*else Log.d(LOG_TAG, "Cursor is null or unable to moveToFirst()");
+        Log.d(LOG_TAG, "ArrayList of news:\n\t\t" + arrayList.toString());*/
         String array[] = arrayList.toArray(new String[n]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, array);
