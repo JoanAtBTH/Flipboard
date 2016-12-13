@@ -228,6 +228,6 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2000-11-01"));
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2010-12-11"));
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2002-11-21"));
-        dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2003-10-15"));
+        dbHelper.add_new("Technology", "Apple", 1, "Apple Pen Pinapple I have a Pen I have an Apple I have an Apple Pen", "", Date.valueOf("2003-10-15"));
     }
 }

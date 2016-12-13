@@ -144,12 +144,13 @@ public class DBHelper extends SQLiteOpenHelper {
         //db.close();
     }
 
-    /** Subscribe to a particular subcategory
+    /** Subscribe / unsubscribe to a particular subcategory
      * @pre the subcategory exists in the db
      * @post all the db instances where that subcategory appears, is subscribed to
      */
-    public void subsribe_to_subcategory(String subcategory) {
+    public void subsribe_to_subcategory(String subcategory, boolean subscribe) {
         Integer subsc = 1;
+        if (!subscribe) subsc = 0;
         ContentValues values = new ContentValues();
         values.put(Contract.TNews.COLUMN_SUBSCRIBED, subsc.toString());
 

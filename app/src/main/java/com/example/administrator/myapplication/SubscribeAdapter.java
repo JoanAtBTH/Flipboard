@@ -1,5 +1,6 @@
 package com.example.administrator.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,18 +16,18 @@ import java.util.ArrayList;
  * Created by joancolom on 15/11/16.
  */
 
-public class SubscribeAdapter extends BaseAdapter {
+public class SubscribeAdapter extends ArrayAdapter<ListModelSubscribe> {
 
     /*
      * private variables of hte class
      */
-    private Context context;
-    private ArrayList<?> data;
+    private Activity context;
+    private ArrayList<ListModelSubscribe> data;
 
-    public SubscribeAdapter(Context context, ArrayList<?> data) {
-        //super(context, R.layout.lv_subscribe_item, data);
-        this.context = context;
+    public SubscribeAdapter(Activity context, ArrayList<ListModelSubscribe> data) {
+        super(context, R.layout.lv_subscribe_item, data);
         this.data = data;
+        this.context = context;
     }
 
     @Override
@@ -39,8 +40,8 @@ public class SubscribeAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return (Object)data.get(position);
+    public ListModelSubscribe getItem(int position) {
+        return data.get(position);
     }
 
     @Override
@@ -49,20 +50,16 @@ public class SubscribeAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ListModelSubscribe modelSubscribe = (ListModelSubscribe) getItem(position);
-        View item = convertView;
-        if (item == null) {
-            item = LayoutInflater.from(context).inflate(R.layout.lv_subscribe_item, null);
-            //convertView = inflater.inflate(R.layout.lv_subscribe_item, parent, false);
-        }
+    public View getView(int position, View view, ViewGroup parent) {
+        LayoutInflater inflater = context.getLayoutInflater();
+        View item = inflater.inflate(R.layout.lv_subscribe_item, null);
 
         // set values of the item
         TextView subcategoryName = (TextView)item.findViewById(R.id.tvSubscribedSubcategory);
-        String name = modelSubscribe.getName();
+        String name = getItem(position).getName();
         subcategoryName.setText(name);
         CheckBox subcategorySubsribed = (CheckBox)item.findViewById(R.id.cbSubscribedSubcategory);
-        if (modelSubscribe.isSubscribed())
+        if (getItem(position).isSubscribed())
             subcategorySubsribed.setChecked(true);
         else
             subcategorySubsribed.setChecked(false);

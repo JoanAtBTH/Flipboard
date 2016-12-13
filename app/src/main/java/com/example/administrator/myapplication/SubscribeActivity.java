@@ -7,11 +7,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.content.Intent;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SubscribeActivity extends AppCompatActivity {
     /*private TextView textView5, textView6, textView7,textView8;
@@ -20,6 +24,9 @@ public class SubscribeActivity extends AppCompatActivity {
     private Button btnGoHome;
     private ArrayList subscribeArrayList;
     private SubscribeAdapter adapter;
+    private ListModelSubscribe listModelSubscribe;
+    private TextView textView;
+    private CheckBox checkBox;
     private final String LOG_TAG = SubscribeActivity.class.getSimpleName();
 
     @Override
@@ -28,6 +35,8 @@ public class SubscribeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_subscribe);
 
         lvSubscribe = (ListView) findViewById(R.id.lvSubscribe);
+        textView = (TextView) findViewById(R.id.tvSubscribedSubcategory);
+        checkBox = (CheckBox) findViewById(R.id.cbSubscribedSubcategory);
         btnGoHome = (Button) findViewById(R.id.btnSubscribeGoHome);
         btnGoHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +53,9 @@ public class SubscribeActivity extends AppCompatActivity {
         /*String info = "Initial arrayList:\n\t\t";
         info += dataToString();
         Log.d(LOG_TAG, info);*/
+
         fillArrayList();
+
         //Debugging info
         /*info = "After fill, arrayList:\n\t\t";
         info += dataToString();
@@ -52,6 +63,43 @@ public class SubscribeActivity extends AppCompatActivity {
 
         // Apply adapter to ListView
         setListViewAdapter();
+        /*lvSubscribe.setOnItemClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                TextView tvSubscribed = (TextView) findViewById(R.id.tvSubscribedSubcategory);
+
+
+            }
+
+        });*/
+        /*checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckBox c = (CheckBox)v;
+                boolean checked = c.isChecked();
+                listModelSubscribe.setSubscribed(checked);
+                String subcategory = textView.getText().toString();
+                DBHelper dbHelper = DBHelper.getInstance(getBaseContext());
+                dbHelper.subsribe_to_subcategory(subcategory, checked);
+            }
+        });*/
+        lvSubscribe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+                // TODO Auto-generated method stub
+                ListModelSubscribe lms = (ListModelSubscribe)lvSubscribe.getSelectedItem();
+                String msupplier = lms.getName();
+
+                Log.d(LOG_TAG, "Selected item :\n\n\t" + msupplier);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
     }
 
     @Override

@@ -10,9 +10,11 @@ import android.widget.TextView;
 public class ListModelSubscribe {
     // private variables
     private String name;
-    private Boolean subscribed;
+    private boolean subscribed;     // subscribed = 0 --> unsubscribed
 
-    public ListModelSubscribe(String name, Boolean subscribed) {
+    public ListModelSubscribe() {}
+
+    public ListModelSubscribe(String name, boolean subscribed) {
         this.name = name;
         this.subscribed = subscribed;
     }
@@ -27,14 +29,14 @@ public class ListModelSubscribe {
     }
 
     public boolean isSubscribed() {
-        return subscribed.booleanValue();
+        return subscribed;
     }
 
-    public void setSubscribed(Boolean subscribed) {
+    public void setSubscribed(boolean subscribed) {
         this.subscribed = subscribed;
     }
 
     public void toggleSubscribed() {
-        subscribed = new Boolean(!subscribed.booleanValue());
+       subscribed = !subscribed;
     }
 }
