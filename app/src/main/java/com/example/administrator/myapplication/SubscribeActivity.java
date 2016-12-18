@@ -95,10 +95,7 @@ public class SubscribeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-
-            }
+            public void onNothingSelected(AdapterView<?> arg0) { }
         });
     }
 

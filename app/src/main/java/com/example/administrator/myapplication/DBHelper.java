@@ -148,7 +148,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @pre the subcategory exists in the db
      * @post all the db instances where that subcategory appears, is subscribed to
      */
-    public void subsribe_to_subcategory(String subcategory, boolean subscribe) {
+    public void subscribe_to_subcategory(String subcategory, boolean subscribe) {
         Integer subsc = 1;
         if (!subscribe) subsc = 0;
         ContentValues values = new ContentValues();
@@ -317,7 +317,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /* Get the maximum id in DB in order to insert a valid one automatically */
     private Integer get_max_id () {
-        String query = "Select MAX(" + Contract.TNews._ID + ") FROM " + Contract.TABLE_NEWS;
+        String query = "Select MAX(" + Contract.TNews.COLUMN_ID + ") FROM " + Contract.TABLE_NEWS;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;

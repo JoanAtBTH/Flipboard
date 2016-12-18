@@ -1,8 +1,15 @@
 package com.example.administrator.myapplication;
 
+import android.content.res.AssetManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,14 +18,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
     private Button button,button2,button3,button4,button5,button7;
@@ -85,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 p.setARGB(200, 255, 255, 0);
                 button4.setText(topicsArrayList.get(3).toString());
                 button4.setTypeface(null, Typeface.BOLD);
-                button4.setBackgroundColor(p.getColor());
+                /*button4.setBackgroundColor(p.getColor());*/
+                Drawable drawable = getResources().getDrawable(R.drawable.topics_sports);
             }
             if (topicsArrayList.size() > 4) {
                 //p.setARGB(200, color.nextInt(256), color.nextInt(256), color.nextInt(256));
@@ -100,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
                 button7.setText(topicsArrayList.get(5).toString());
                 button7.setTypeface(null, Typeface.BOLD);
                 button7.setBackgroundColor(p.getColor());
+                Drawable d = getResources().getDrawable(R.drawable.ic_action_name);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    button7.setBackground(d);
+                }
             }
         }
 
@@ -228,6 +244,6 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2000-11-01"));
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2010-12-11"));
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2002-11-21"));
-        dbHelper.add_new("Technology", "Apple", 1, "Apple Pen Pinapple I have a Pen I have an Apple I have an Apple Pen", "", Date.valueOf("2003-10-15"));
+        dbHelper.add_new("Technology", "Apple", 1, "Apple Pen Pinapple I have a Pen I have an Apple I have an Apple Pen", "", Date.valueOf("2015-10-15"));
     }
 }
