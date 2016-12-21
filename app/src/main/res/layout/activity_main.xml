@@ -30,7 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Topic4" />
+                android:text="Topic4"
+                android:background="@drawable/topics_sports"/>
 
             <Button android:id="@+id/button5"
                 android:layout_width="match_parent"
@@ -52,7 +53,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Topic6" />
+                android:text="Topic6"
+                android:background="@drawable/ic_action_name"/>
         </LinearLayout>
     </LinearLayout>
 
