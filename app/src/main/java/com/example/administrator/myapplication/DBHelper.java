@@ -149,14 +149,15 @@ public class DBHelper extends SQLiteOpenHelper {
      * @post all the db instances where that subcategory appears, is subscribed to
      */
     public void subscribe_to_subcategory(String subcategory, boolean subscribe) {
-        Integer subsc = 1;
+        Integer subsc;
         if (!subscribe) subsc = 0;
+        else subsc = 1;
         ContentValues values = new ContentValues();
         values.put(Contract.TNews.COLUMN_SUBSCRIBED, subsc.toString());
 
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            db.update(Contract.TABLE_NEWS, values, Contract.TNews.COLUMN_SUBCATEGORY + "=" + subcategory, null);
+            db.update(Contract.TABLE_NEWS, values, Contract.TNews.COLUMN_SUBCATEGORY + "='" + subcategory + "'", null);
         }
         catch (SQLiteException e) {
             Log.d(LOG_TAG, "Error function subscribe_to_subcategory(subc):\n\t" + e.getMessage());

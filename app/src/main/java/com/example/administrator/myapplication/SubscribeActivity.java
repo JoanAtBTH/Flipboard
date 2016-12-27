@@ -17,14 +17,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.administrator.myapplication.R.layout.lv_subscribe_item;
+
 public class SubscribeActivity extends AppCompatActivity {
     /*private TextView textView5, textView6, textView7,textView8;
     private CheckBox checkBox,checkBox2, checkBox3, checkBox4;*/
     private ListView lvSubscribe;
     private Button btnGoHome;
-    private ArrayList subscribeArrayList;
+    private List<ListModelSubscribe> subscribeList;
     private SubscribeAdapter adapter;
-    private ListModelSubscribe listModelSubscribe;
     private TextView textView;
     private CheckBox checkBox;
     private final String LOG_TAG = SubscribeActivity.class.getSimpleName();
@@ -38,16 +39,6 @@ public class SubscribeActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.tvSubscribedSubcategory);
         checkBox = (CheckBox) findViewById(R.id.cbSubscribedSubcategory);
         btnGoHome = (Button) findViewById(R.id.btnSubscribeGoHome);
-        btnGoHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SubscribeActivity.this, MainActivity.class);
-                if (intent.resolveActivity(getPackageManager()) != null)
-                    startActivityForResult(intent, 0);
-                else
-                    Log.e(LOG_TAG, "Error on changing view with GoHome btn");
-            }
-        });
 
         //Debugging info
         /*String info = "Initial arrayList:\n\t\t";
@@ -63,31 +54,11 @@ public class SubscribeActivity extends AppCompatActivity {
 
         // Apply adapter to ListView
         setListViewAdapter();
-        /*lvSubscribe.setOnItemClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v) {
-                TextView tvSubscribed = (TextView) findViewById(R.id.tvSubscribedSubcategory);
 
-
-            }
-
-        });*/
-        /*checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckBox c = (CheckBox)v;
-                boolean checked = c.isChecked();
-                listModelSubscribe.setSubscribed(checked);
-                String subcategory = textView.getText().toString();
-                DBHelper dbHelper = DBHelper.getInstance(getBaseContext());
-                dbHelper.subsribe_to_subcategory(subcategory, checked);
-            }
-        });*/
         lvSubscribe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
-                // TODO Auto-generated method stub
                 ListModelSubscribe lms = (ListModelSubscribe)lvSubscribe.getSelectedItem();
                 String msupplier = lms.getName();
 
@@ -96,6 +67,15 @@ public class SubscribeActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) { }
+        });
+
+        lvSubscribe.setOnItemClickListener(new  AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ListModelSubscribe lms = (ListModelSubscribe)lvSubscribe.getItemAtPosition(i);
+                Log.d(LOG_TAG, "clicked element:\n\t" + lms.getName());
+            }
         });
     }
 
@@ -128,6 +108,8 @@ public class SubscribeActivity extends AppCompatActivity {
     }
 
     public void onClickGoHomeView(View view) {
+        String data = dataToString();
+        Log.d(LOG_TAG, data);
         Intent intent = new Intent(this, MainActivity.class);
 
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -142,7 +124,7 @@ public class SubscribeActivity extends AppCompatActivity {
      * Private methods
      */
     private void fillArrayList() {
-        subscribeArrayList = new ArrayList<ListModelSubscribe>();
+        subscribeList = new ArrayList<ListModelSubscribe>();
         DBHelper db = DBHelper.getInstance(this);
         Cursor cursor = db.select_subcategories();
         try {
@@ -153,7 +135,7 @@ public class SubscribeActivity extends AppCompatActivity {
                     Boolean subscribed = db.isSubscribed(subcat);
                     ListModelSubscribe subscription = new ListModelSubscribe(subcat, subscribed);
                     if (subcat != "")
-                        subscribeArrayList.add(subscription);
+                        subscribeList.add(subscription);
                 }
                 while (cursor.moveToNext());
             }
@@ -164,21 +146,25 @@ public class SubscribeActivity extends AppCompatActivity {
     }
 
     private void setListViewAdapter() {
-        adapter = new SubscribeAdapter(this, subscribeArrayList);
+        adapter = new SubscribeAdapter(this, subscribeList);
         lvSubscribe.setAdapter(adapter);
     }
 
     private String dataToString() {
         String result = "null";
-        if (subscribeArrayList != null) {
-            int n = subscribeArrayList.size();
+        if (subscribeList != null) {
+            int n = subscribeList.size();
             ListModelSubscribe subscription;
             result = "";
             for (int i = 0; i < n; i++) {
-                subscription = (ListModelSubscribe) subscribeArrayList.get(i);
+                subscription = (ListModelSubscribe) subscribeList.get(i);
                 result += "(  " + subscription.getName() + ", " + subscription.isSubscribed() + "   ) ;";
             }
         }
         return result;
+    }
+
+    private void updateDataBase() {
+
     }
 }
