@@ -8,51 +8,67 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.litreily.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShowActivity"
+            android:label="Show">
+            <intent-filter>
+                <action android:name="com.litreily.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NewsActivity"
+            android:label="News">
+            <intent-filter>
+                <action android:name="com.litreily.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ContentActivity" />
+        <activity
+            android:name=".SubscribeActivity"
+            android:label="Subscribe">
+            <intent-filter>
+                <action android:name="com.litreily.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="Help">
+            <intent-filter>
+                <action android:name="com.litreily.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SubcategoryActivity"
+            android:label="Subcategory">
+            <intent-filter>
+                <action android:name="com.litreily.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".loginActivity"
+            android:label="Flipboard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ShowActivity"
-            android:label="Show">
-        <intent-filter>
-            <action android:name="com.litreily.SecondActivity"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-        </intent-filter>
-        </activity>
-
-        <activity android:name=".NewsActivity"
-            android:label="News">
-            <intent-filter>
-                <action android:name="com.litreily.SecondActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".ContentActivity" />
-        <activity android:name=".SubscribeActivity"
-            android:label="Subscribe">
-            <intent-filter>
-                <action android:name="com.litreily.SecondActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".HelpActivity"
-            android:label="Help">
-            <intent-filter>
-                <action android:name="com.litreily.SecondActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".SubcategoryActivity"
-            android:label="Subcategory">
-            <intent-filter>
-                <action android:name="com.litreily.SecondActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
     </application>
