@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
         dbHelper.add_new("Technology", "Google", 0, "", "", Date.valueOf("2002-11-21"));
         dbHelper.add_new("Technology", "Mac OS", 0, "", "", Date.valueOf("2003-10-15"));
 
-        // android news
+        // apple news
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleAppleApple", "", Date.valueOf("2000-11-01"));
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2000-11-01"));
         dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2010-12-11"));
