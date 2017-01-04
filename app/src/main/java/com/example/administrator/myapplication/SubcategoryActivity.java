@@ -3,7 +3,6 @@ package com.example.administrator.myapplication;
 import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,15 +16,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
@@ -153,11 +154,16 @@ public class SubcategoryActivity extends Activity {
             XmlPullParser xpp = factory.newPullParser();
 
             // We will get the XML from an input stream
-            //xpp.setInput(getInputStream(rssURL), "UTF_8");
-        } catch (MalformedURLException e) {
+            InputStream inputStream = new URL(rssURL.toString()).openStream();
+            xpp.setInput(inputStream, "UTF_8");
+        }
+        catch (MalformedURLException e) {
             Log.d(LOG_TAG, "Problem with rss url:\n\t" + e.getMessage());
-        } catch (XmlPullParserException e) {
+        }
+        catch (XmlPullParserException e) {
             Log.d(LOG_TAG, "Problem with xmlPullParser:\n\t" + e.getMessage());
+        } catch (IOException e) {
+            Log.d(LOG_TAG, "Problem with inputStream:\n\t" + e.getMessage());
         }
     }
 
