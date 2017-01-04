@@ -9,10 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class loginActivity extends AppCompatActivity {
     private TextView textView12, textView13;
     private EditText editText, editText2;
-    private Button button6;
+    private Button button6, button9;
+    private String [] a = new String [10];
+    private String [] b = new String [10];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,19 +27,48 @@ public class loginActivity extends AppCompatActivity {
         editText=(EditText)findViewById(R.id.editText);
         editText2=(EditText)findViewById(R.id.editText2);
         button6=(Button)findViewById(R.id.button6);
+        button9=(Button)findViewById(R.id.button9);
+        a[0]="abc";
+        b[0]="123";
+
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(editText.getText().toString().equals("abc")&&editText2.getText().toString().equals("123")){
-                Intent intent = new Intent(loginActivity.this, MainActivity.class);
-                startActivity(intent);}
-                if(!editText.getText().toString().equals("abc")&&editText2.getText().toString().equals("123")){
-                    Toast.makeText(loginActivity.this, "user name is wrong", Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                Bundle bundle = intent.getExtras();
+                if(bundle!=null) {
+                    String userName = bundle.getString("userName");
+                    String passWord = bundle.getString("passWord");
+                    for (int i = 1; i < 10; i++) {
+                        if (a[i]!=null) {
+
+                        }
+                        else{
+                            a[i]=userName;
+                            b[i]=passWord;
+                            break;
+                        }
                     }
-                if(editText.getText().toString().equals("abc")&&!editText2.getText().toString().equals("123")){
-                    Toast.makeText(loginActivity.this, "password is wrong", Toast.LENGTH_SHORT).show();
+                    //a[1]=userName;
+                    //b[1]=passWord;
                 }
+                for(int i=0;i<10;i++) {
+                    if (editText.getText().toString().equals(a[i]) && editText2.getText().toString().equals(b[i])) {
+                        Intent intent1 = new Intent(loginActivity.this, MainActivity.class);
+                        startActivity(intent1);
+                    }
+                }
+
+            }
+        });
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Intent intent2 = new Intent(loginActivity.this, RegisterActivity.class);
+                    startActivity(intent2);
             }
         });
     }
 }
+
