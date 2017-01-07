@@ -226,24 +226,85 @@ public class MainActivity extends AppCompatActivity {
 
         // topics
         dbHelper.add_new("Technology", "", 0, "", "", Date.valueOf("2000-11-01"));
-        dbHelper.add_new("Science", "", 0, "", "", Date.valueOf("2001-12-02"));
+        dbHelper.add_new("Entertainment", "", 0, "", "", Date.valueOf("2001-12-02"));
         dbHelper.add_new("Sports", "", 0, "", "", Date.valueOf("2002-01-03"));
-        dbHelper.add_new("Culture", "", 0, "", "", Date.valueOf("2003-02-04"));
-        dbHelper.add_new("Trending topics", "", 0, "", "", Date.valueOf("2004-03-05"));
-        dbHelper.add_new("News", "", 0, "", "", Date.valueOf("2005-04-06"));
+        dbHelper.add_new("Politics", "", 0, "", "", Date.valueOf("2003-02-04"));
+        dbHelper.add_new("Life style", "", 0, "", "", Date.valueOf("2004-03-05"));
+        dbHelper.add_new("Business", "", 0, "", "", Date.valueOf("2005-04-06"));
 
         // subcategories
-        dbHelper.add_new("Technology", "Android", 0, "", "", Date.valueOf("2000-11-01"));
-        dbHelper.add_new("Technology", "Apple", 1, "", "", Date.valueOf("2000-11-01"));
-        dbHelper.add_new("Technology", "Gadgets", 1, "", "", Date.valueOf("2010-12-11"));
-        dbHelper.add_new("Technology", "Google", 0, "", "", Date.valueOf("2002-11-21"));
-        dbHelper.add_new("Technology", "Mac OS", 0, "", "", Date.valueOf("2003-10-15"));
+        dbHelper.add_new("Technology", "Computers", 1, "", "", Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Technology", "SmartPhones", 1, "", "", Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Technology", "Automobiles", 1, "", "", Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Technology", "Green Technology", 1, "", "", Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Technology", "Information & Communication Technology", 1, "", "", Date.valueOf("2003-10-15"));
+
+        dbHelper.add_new("Sports","Formula 1",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Sports","Cricket",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Sports","Football",1,"","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Sports","Tennis",1,"","",Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Sports","Badminton",1,"","",Date.valueOf("2015-10-15"));
+
+        dbHelper.add_new("Entertainment","Music",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Entertainment","Trending",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Entertainment","Hollywood",1,"","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Entertainment","Television",1,"","",Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Entertainment","Celebrities",1,"","",Date.valueOf("2015-10-15"));
+
+        dbHelper.add_new("Politics","Travel",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Politics","Food",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Politics","Fashion",1,"","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Politics","Health",1,"","",Date.valueOf("2002-11-21"));
+
+        dbHelper.add_new("Life Style","Nordic Politics",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Life Style","US Politics",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Life Style","East asian",1,"","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Life Style","Indian politics",1,"","",Date.valueOf("2002-11-21"));
+
+        dbHelper.add_new("Business","BBC",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Business","CNN",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Business","CNBC",1,"","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Business","Forbes",1,"","",Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Business","Bloomberg",1,"","",Date.valueOf("2015-10-15"));
 
         // apple news
-        dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleAppleApple", "", Date.valueOf("2000-11-01"));
-        dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2000-11-01"));
-        dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2010-12-11"));
-        dbHelper.add_new("Technology", "Apple", 1, "AppleAppleAppleAppleAppleApple", "", Date.valueOf("2002-11-21"));
-        dbHelper.add_new("Technology", "Apple", 1, "Apple Pen Pinapple I have a Pen I have an Apple I have an Apple Pen", "", Date.valueOf("2015-10-15"));
+        dbHelper.add_new("Technology", "Computers", 1, "This Dell 2-in-1 laptop can wirelessly charge through its keyboard", "", Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Technology", "SmartPhones", 1, "What Samsung expects from iPhone 8\n" +
+                "Samsung works pretty hard to make sure its products offer more or less the same features as Apple's iPhone, so the rumors speak volumes here", "", Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Technology", "Automobiles", 1, "Mercedes will give Tesla's Autopilot its first real competition this year", "", Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Technology", "Green Technology", 1, "The World's First Solar Road Is Open in France", "", Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Technology", "Information & Communication Technology", 1, "Indian Govt to bring information and communication policy: I&B minister Venkaiah Naidu", "", Date.valueOf("2003-10-15"));
+
+        dbHelper.add_new("Sports","Formula 1",1,"Pirelli says it will need to wait until after the first few races of the 2017 Formula 1 season to know for definite if its new wider tyres have hit their targets for the new generation of cars.","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Sports","Cricket",1,"Full schedule of India-England Test, ODI, T20I series (November 2016 to February 2017)","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Sports","Football",1,"Wayne Rooney equals record as Manchester United ease past Reading","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Sports","Tennis",1,"Qatar Open: Sir Andy Murray to face Novak Djokovic in final","",Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Sports","Badminton",1,"Nobody can understand how tough my life is: Carolina Marin","",Date.valueOf("2015-10-15"));
+
+        dbHelper.add_new("Entertainment","Music",1,"Ed Sheeran Delivers Long-Awaited New Music: Listen to 'Shape of You' and 'Castle on the Hill","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Entertainment","Trending",1,"Carrie Fisher's ashes carried in 'a giant Prozac pill\n" +
+                "Fisher and her mom Debbie Reynolds laid to rest together at Hollywood Hills cemetery","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Entertainment","Hollywood",1,"China Is Mad About Hollywood Remakes\n" +
+                "Localized films and TV shows like “Mad About You” are luring viewers to China’s streaming sites","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Entertainment","Television",1,"What's New on HBO\n" +
+                "That’s a lot of blood: The Nice Guys,That’s a lot of blood: The Nice Guys.TELEVISION Sesame Street, season 47 premiere (January 7),The Young Pope, series premiere (January 15),Real Time With Bill Maher premiere (January 21)","",Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Entertainment","Celebrities",1,"Last year really WAS a terrible year to be a celebrity: Number of famous deaths in 2016 is only expected once every 200 years","",Date.valueOf("2015-10-15"));
+
+        dbHelper.add_new("Politics","Travel",1,"The World's First Solar Road Is Open in France\n" +
+                "It's still unknown whether the investment will pay off.","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Politics","Food",1,"Prepare Your Taste Buds: McDonald's Is Now Offering a Chicken and Waffles Sandwich.","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Politics","Fashion",1,"Award-Season-Worthy Gowns From The SS17 Shows.","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Politics","Health",1,"Whether popcorn is \"healthy\" depends how you eat it.In its purest form -- that is, plain air-popped kernels -- it's a healthy, whole-grain, antioxidant-rich snack food that comes at a pretty low-calorie cost for those who like to mindlessly nibble.","",Date.valueOf("2002-11-21"));
+
+        dbHelper.add_new("Life Style","Nordic Politics",1,"Elections in Finland.The Centre Party holds.Finns demote their pro-European prime minister but a hard line on Greece is unlikely","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Life Style","US Politics",1,"Auto industry's Trump fear: 'Everyone dreads being subject of a tweet'.Auto executives and analysts are fretting about how Trump will use the bully pulpit of his office – and his Twitter account – to try and force a radical change","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Life Style","East asian",1,"China Ready to Step Up Scrutiny of U.S. Firms If Trump Starts Feud: Sources","",Date.valueOf("2010-12-11"));
+        dbHelper.add_new("Life Style","Indian politics",1,"BJP gets battle ready with Modi, surgical strikes and demonetisation in its arsenal","",Date.valueOf("2002-11-21"));
+
+        dbHelper.add_new("Business","BBC",1,"Trump says Toyota will face tariffs on cars made in Mexico's","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Business","CNN",1,"SpaceX gets green light days before scheduled launch","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Business","CNBC",1,"Economic forecasting in crisis: Bank of England chief economist","",Date.valueOf("2000-11-01"));
+        dbHelper.add_new("Business","Forbes",1,"First Volkswagen Manager Goes To Jail For Diesel Gate","",Date.valueOf("2002-11-21"));
+        dbHelper.add_new("Business","Bloomberg",1,"The Strong Dollar Could Bash the Economy—and It’s Just Getting Started.The surging greenback could slam U.S. manufacturing and trigger capital flight from emerging markets","",Date.valueOf("2015-10-15"));
     }
 }
