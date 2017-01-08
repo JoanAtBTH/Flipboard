@@ -6,4 +6,6 @@
     android:id="@+id/help_item" />
     <item android:id="@+id/subscribe_item"
         android:title="subscribe" />
+    <item android:id="@+id/logout_item"
+        android:title="log out"/>
 </menu>

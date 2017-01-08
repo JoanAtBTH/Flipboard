@@ -47,6 +47,8 @@ public class HelpActivity extends AppCompatActivity {
             intent = new Intent(HelpActivity.this, HelpActivity.class);
         else if (id == R.id.subscribe_item)
             intent = new Intent(HelpActivity.this, SubscribeActivity.class);
+        else if (id == R.id.logout_item)
+            intent = new Intent(HelpActivity.this, loginActivity.class);
 
         //noinspection SimplifiableIfStatement
         if (intent.resolveActivity(getPackageManager()) != null)

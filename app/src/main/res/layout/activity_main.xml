@@ -17,6 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="0dp"
+                android:background="@drawable/business"
                 android:id="@+id/button" />
 
             <Button
@@ -24,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/lifestyle"
                 android:id="@+id/button2" />
 
             <Button android:id="@+id/button4"
@@ -31,13 +33,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Topic4"
-                android:background="@drawable/topics_sports"/>
+                android:background="@drawable/sports"/>
 
             <Button android:id="@+id/button5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Topic5" />
+                android:text="Topic5"
+                android:background="@drawable/entertainment"/>
         </LinearLayout>
         <LinearLayout android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -47,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:background="@drawable/politics"
                 android:text="Topic3" />
 
             <Button android:id="@+id/button7"
@@ -54,7 +58,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="Topic6"
-                android:background="@drawable/ic_action_name"/>
+                android:background="@drawable/technology"/>
         </LinearLayout>
     </LinearLayout>
 

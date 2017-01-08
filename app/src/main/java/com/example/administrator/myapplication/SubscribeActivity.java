@@ -98,6 +98,8 @@ public class SubscribeActivity extends AppCompatActivity {
             intent = new Intent(SubscribeActivity.this, HelpActivity.class);
         else if (id == R.id.subscribe_item)
             intent = new Intent(SubscribeActivity.this, SubscribeActivity.class);
+        else if (id == R.id.logout_item)
+            intent = new Intent(SubscribeActivity.this, loginActivity.class);
 
         //noinspection SimplifiableIfStatement
         if (id != R.id.subscribe_item && intent.resolveActivity(getPackageManager()) != null)

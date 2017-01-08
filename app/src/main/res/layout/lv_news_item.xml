@@ -4,21 +4,26 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_marginTop="20dp"
         android:text="title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvTittleNews"
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="21sp"
+        android:textColor="@android:color/black" />
 
     <TextView
+        android:layout_marginTop="20dp"
         android:text="content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvContentNews"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="?attr/colorControlNormal" />
 
     <ImageView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ivNews"/>

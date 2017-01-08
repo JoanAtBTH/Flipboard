@@ -123,6 +123,8 @@ public class SubcategoryActivity extends Activity {
             intent = new Intent(SubcategoryActivity.this, HelpActivity.class);
         else if (id == R.id.subscribe_item)
             intent = new Intent(SubcategoryActivity.this, SubscribeActivity.class);
+        else if (id == R.id.logout_item)
+            intent = new Intent(SubcategoryActivity.this, loginActivity.class);
 
         //noinspection SimplifiableIfStatement
         if (intent.resolveActivity(getPackageManager()) != null)

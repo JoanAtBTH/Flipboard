@@ -67,8 +67,10 @@ public class NewsActivity extends AppCompatActivity {
             n = cursor.getCount();
             /*Log.d(LOG_TAG, "Number of rows of the query:\n\t\t" + n);*/
             do {
-                tittle = "tiitle";
-                newsContent = cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_NEW_CONTENT)).toString();
+                String[] ary1=(cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_NEW_CONTENT)).toString()).split("/");
+
+                tittle = ary1[0];
+                newsContent = ary1[1];
                 image = cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_IMAGE)).toString();
                 /*if (image != "") {
                     Bitmap bitmap = new BitmapFactory().decodeFile(image);
@@ -100,6 +102,8 @@ public class NewsActivity extends AppCompatActivity {
             intent = new Intent(NewsActivity.this, HelpActivity.class);
         else if (id == R.id.subscribe_item)
             intent = new Intent(NewsActivity.this, SubscribeActivity.class);
+        else if (id == R.id.logout_item)
+            intent = new Intent(NewsActivity.this, loginActivity.class);
 
         //noinspection SimplifiableIfStatement
         if (intent.resolveActivity(getPackageManager()) != null)
