@@ -1,6 +1,7 @@
 package com.example.administrator.myapplication;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class NewsAdapter extends ArrayAdapter<ListModelNews> {
     private LayoutInflater layoutInflater;
-    private final String LOG_TAG=NewsAdapter.class.getSimpleName();
+    private final String LOG_TAG = NewsAdapter.class.getSimpleName();
 
     public NewsAdapter(Activity context, List<ListModelNews> data) {
         super(context, R.layout.lv_news_item, data);
@@ -31,12 +33,14 @@ public class NewsAdapter extends ArrayAdapter<ListModelNews> {
         if(convertView==null) {
             holder = new Holder();
             convertView = layoutInflater.inflate(R.layout.lv_news_item, parent, false);
-            holder.setTextView((TextView) convertView
-                    .findViewById(R.id.tvSubscribedSubcategory));
+            holder.setTvTittle((TextView) convertView.findViewById(R.id.tvTittleNews));
+            holder.setTvContent((TextView) convertView.findViewById(R.id.tvContentNews));
+            holder.setIvImage((ImageView) convertView.findViewById(R.id.ivNews));
         }
-        final ListModelNews modelNews= getItem(position);
-        holder.getTextView().setText(modelNews.getTitle());
-        holder.getTextView().setText(modelNews.getNewsContent());
+        final ListModelNews modelNews = getItem(position);
+        holder.getTvTittle().setText(modelNews.getTitle());
+        holder.getTvContent().setText(modelNews.getNewsContent());
+        holder.getIvImage().setImageBitmap(modelNews.getBitmap());
         return convertView;
     }
 
@@ -46,19 +50,37 @@ public class NewsAdapter extends ArrayAdapter<ListModelNews> {
         /*
          * private attributes
          */
-        private TextView textView;
+        private TextView tvTittle;
+        private TextView tvContent;
+        private ImageView ivImage;
 
         /*
          * Getter & setters
          */
-        public TextView getTextView() {
-            return textView;
+
+        public TextView getTvTittle() {
+            return tvTittle;
         }
 
-        public void setTextView(TextView textView) {
-            this.textView = textView;
+        public void setTvTittle(TextView tvTittle) {
+            this.tvTittle = tvTittle;
         }
 
+        public TextView getTvContent() {
+            return tvContent;
+        }
+
+        public void setTvContent(TextView tvContent) {
+            this.tvContent = tvContent;
+        }
+
+        public ImageView getIvImage() {
+            return ivImage;
+        }
+
+        public void setIvImage(ImageView ivImage) {
+            this.ivImage = ivImage;
+        }
     }
 
 }

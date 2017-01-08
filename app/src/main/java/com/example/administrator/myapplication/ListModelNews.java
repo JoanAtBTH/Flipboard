@@ -3,11 +3,14 @@ package com.example.administrator.myapplication;
 /**
  * Created by Administrator on 1/8/2017.
  */
+import android.graphics.Bitmap;
 import android.widget.TextView;
 
 public class ListModelNews {
     private String title;
     private String newsContent;
+    private Bitmap bitmap;
+
     public ListModelNews() {}
 
     public ListModelNews(String title, String newsContent) {
@@ -30,5 +33,13 @@ public class ListModelNews {
 
     public void setNewsContent(String newsContent) {
         this.newsContent = newsContent;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 }

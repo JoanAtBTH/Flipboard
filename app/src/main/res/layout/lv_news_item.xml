@@ -7,7 +7,7 @@
         android:text="title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView16"
+        android:id="@+id/tvTittleNews"
         android:textAlignment="center"
         android:textSize="24sp" />
 
@@ -15,12 +15,11 @@
         android:text="content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView17"
+        android:id="@+id/tvContentNews"
         android:textSize="18sp" />
 
-    <TextView
-        android:text="picture"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView18" />
+        android:id="@+id/ivNews"/>
 </LinearLayout>
