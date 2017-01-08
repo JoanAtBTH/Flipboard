@@ -1,6 +1,10 @@
 package com.example.administrator.myapplication;
 
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +26,12 @@ import java.util.List;
 
 public class NewsActivity extends AppCompatActivity {
     private ListView listView;
+    private NewsAdapter adapter;
+    private List<ListModelNews> newsList;
     private Integer id, subscribed;
-    private String topic, subcategory, newsContent, image;
+    private String topic, subcategory, tittle, newsContent, image;
+    private TextView tvTittle, tvContent;
+    private ImageView ivImage;
     private Date date;
     private ArrayList<String> arrayList;
     private final String LOG_TAG = NewsActivity.class.getSimpleName();
@@ -33,28 +42,47 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         listView = (ListView) findViewById(R.id.lvNews);
+        tvTittle = (TextView) findViewById(R.id.tvTittleNews);
+        tvContent = (TextView) findViewById(R.id.tvContentNews);
+        ivImage = (ImageView) findViewById(R.id.ivNews);
 
         subcategory = (String)this.getIntent().getExtras().getString("subcategory");
+
+        fillArrayList();
+
+        String array[] = arrayList.toArray(new String[arrayList.size()]);
+        adapter = new NewsAdapter(this, newsList);
+        listView.setAdapter(adapter);
+    }
+
+    private void fillArrayList() {
+        newsList = new ArrayList<ListModelNews>();
         DBHelper db = DBHelper.getInstance(this);
         Cursor cursor = db.select_news_subcategory(subcategory);
         /*Log.d(LOG_TAG, "Subcategory recibed on NewsActivity:\n\t\t" + subcategory);*/
+
         int n = 0;
         arrayList = new ArrayList<String>();
         if (cursor!= null && cursor.moveToFirst()) {
             n = cursor.getCount();
             /*Log.d(LOG_TAG, "Number of rows of the query:\n\t\t" + n);*/
             do {
-                arrayList.add(cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_NEW_CONTENT)).toString());
+                tittle = "tiitle";
+                newsContent = cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_NEW_CONTENT)).toString();
+                image = cursor.getString(cursor.getColumnIndex(Contract.TNews.COLUMN_IMAGE)).toString();
+                /*if (image != "") {
+                    Bitmap bitmap = new BitmapFactory().decodeFile(image);
+                    Drawable d = new BitmapDrawable(bitmap);
+                }*/
+                ListModelNews modelNews = new ListModelNews(tittle, newsContent);
+                newsList.add(modelNews);
             }
             while (cursor.moveToNext());
         }
         /*else Log.d(LOG_TAG, "Cursor is null or unable to moveToFirst()");
         Log.d(LOG_TAG, "ArrayList of news:\n\t\t" + arrayList.toString());*/
-        String array[] = arrayList.toArray(new String[n]);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, array);
-        listView.setAdapter(adapter);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
